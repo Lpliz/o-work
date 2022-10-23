@@ -1,0 +1,51 @@
+package net.javaguides.springboot.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import net.javaguides.springboot.model.customer;
+import net.javaguides.springboot.model.technician;
+
+@Repository
+public class customerdao {
+    
+    @Autowired
+    private JdbcTemplate jdbctemplate;
+    
+    public void customerdao()
+    {
+        
+    }
+    
+    public int createtablecustomer()
+    {
+       String query="CREATE TABLE IF NOT EXISTS customer\n"
+               + "(\n"
+               + "    name VARCHAR(255) ,\n"
+               + "    address VARCHAR(255) ,\n"
+               + "    phone VARCHAR(50) NOT NULL,\n"
+               + "    email VARCHAR(255) NOT NULL,\n"
+               + "    password VARCHAR(255) , \n"
+               + "    PRIMARY key (email)  \n"
+               + ");";
+       int update =  this.jdbctemplate.update(query);
+       return update;
+        
+    }
+    public void insertcustomer(customer cust)
+    {
+        String query="insert into customer values(?,?,?,?,?)";
+        this.jdbctemplate.update(query,cust.getName(),cust.getAddress(),cust.getPhone(),cust.getEmail(),cust.getPassword());
+        System.out.println("successfully inserted");
+        
+    }
+    
+    public int countbyemail(String email)
+    {
+        String query="select count(*) from customer where email = ? ";
+        return this.jdbctemplate.queryForObject(query,Integer.class,email);
+    }
+
+
+}
