@@ -64,5 +64,10 @@ public class techniciandao {
         return this.jdbctemplate.query(sql, new BeanPropertyRowMapper<technician>(technician.class));
     }
     
+    public List<technician> getbyworkdomain(String work)
+    {
+        String sql="select * from technician where areaofexpertise= ? ";
+        return this.jdbctemplate.query(sql, new BeanPropertyRowMapper<technician>(technician.class),work);
+    }
     
 }

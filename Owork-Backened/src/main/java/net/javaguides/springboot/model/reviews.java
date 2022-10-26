@@ -1,11 +1,13 @@
 package net.javaguides.springboot.model;
 
 public class reviews {
+    
     private int reviewid;
     private String description;
     private int rating;
-    private int technicianid;
-    private int customerid;
+    private String technicianemail;
+    private String customeremail;
+    
     public int getReviewid() {
         return reviewid;
     }
@@ -24,18 +26,19 @@ public class reviews {
     public void setRating(int rating) {
         this.rating = rating;
     }
-    public int getTechnicianid() {
-        return technicianid;
+    public String getTechnicianemail() {
+        return technicianemail;
     }
-    public void setTechnicianid(int technicianid) {
-        this.technicianid = technicianid;
+    public void setTechnicianemail(String technicianemail) {
+        this.technicianemail = technicianemail;
     }
-    public int getCustomerid() {
-        return customerid;
+    public String getCustomeremail() {
+        return customeremail;
     }
-    public void setCustomerid(int customerid) {
-        this.customerid = customerid;
+    public void setCustomeremail(String customeremail) {
+        this.customeremail = customeremail;
     }
     
+   
 
 }

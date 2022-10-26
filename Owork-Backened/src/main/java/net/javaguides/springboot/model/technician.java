@@ -62,15 +62,10 @@ public class technician {
         this.password = password;
     }
    
-private List<requests> assignedrequests;
+
    private List<reviews> assignedreviews;
    private List<orders> assignedorders;
-public List<requests> getAssignedrequests() {
-    return assignedrequests;
-}
-public void setAssignedrequests(List<requests> assignedrequests) {
-    this.assignedrequests = assignedrequests;
-}
+   
 public List<reviews> getAssignedreviews() {
     return assignedreviews;
 }

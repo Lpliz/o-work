@@ -10,7 +10,7 @@ import net.javaguides.springboot.model.technician;
 
 
 @Service
-public class customerserviceimpl {
+public class CustomerServiceImpl {
     
     
     @Autowired

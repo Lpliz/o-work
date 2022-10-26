@@ -9,7 +9,7 @@ import net.javaguides.springboot.dao.techniciandao;
 import net.javaguides.springboot.model.technician;
 
 @Service
-public class technicianserviceimpl {
+public class TechnicianServiceImpl {
     
     @Autowired
     techniciandao tchdao;
@@ -32,6 +32,17 @@ public class technicianserviceimpl {
     public List<technician> getalltechnician()
     {
       return  tchdao.getall();
+    }
+    
+    public List<technician> Getbyworkdomain(String work)
+    {
+        return tchdao.getbyworkdomain(work);
+        
+    }
+    
+    public technician getbyemail(String email)
+    {
+        return tchdao.findbyemail(email);
     }
 
 }
