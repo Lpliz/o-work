@@ -21,7 +21,7 @@ public class customer {
         this.password = password;
     }
     private List<reviews> reviewsgiven;
-    private List<requests> requestedrequests;
+    
     private List<orders> requestedorders;
     
     public String getName() {
@@ -56,12 +56,7 @@ public class customer {
     public void setReviewsgiven(List<reviews> reviewsgiven) {
         this.reviewsgiven = reviewsgiven;
     }
-    public List<requests> getRequestedrequests() {
-        return requestedrequests;
-    }
-    public void setRequestedrequests(List<requests> requestedrequests) {
-        this.requestedrequests = requestedrequests;
-    }
+   
     public List<orders> getRequestedorders() {
         return requestedorders;
     }

@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.javaguides.springboot.model.customer;
-import net.javaguides.springboot.service.customerserviceimpl;
+import net.javaguides.springboot.service.CustomerServiceImpl;
 
 @RestController
 public class customercontroller {
     
     @Autowired
-    customerserviceimpl custserviceimpl;
+    CustomerServiceImpl custserviceimpl;
     
-    @PostMapping("/signupcustomer")
+    @PostMapping("/api/signupcustomer")
     public void sigupcust(@RequestBody customer cust)
     {
         custserviceimpl.addcustomer(cust);
