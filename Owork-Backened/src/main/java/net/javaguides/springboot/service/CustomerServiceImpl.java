@@ -30,5 +30,17 @@ public class CustomerServiceImpl {
             System.out.println("user already exist");
         }
     }
+    
+    
+    public int CountCust()
+    {
+        return custdao.countTotalCust();
+    }
+    
+    
+    public customer custinfo(String email)
+    {
+        return custdao.getcustinfo(email);
+    }
 
 }

@@ -3,6 +3,7 @@ package net.javaguides.springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +23,10 @@ public class OrderController {
     
     
     @PostMapping("/api/addorder")
-    public void addOrder(@RequestBody orders Order)
+    public ResponseEntity<String> addOrder(@RequestBody orders Order)
     {
         orderserviceimpl.addorder(Order);
+        return  ResponseEntity.ok("successfully added order");
         
     }
     
@@ -36,10 +38,10 @@ public class OrderController {
     }
     
     @PutMapping("/api/updateorderstatus")
-    public void updateOrderStatus(@RequestParam(name="orderid") int orderid , @RequestParam(name="currstatus") String currstatus)
+    public ResponseEntity<String> updateOrderStatus(@RequestParam(name="orderid") int orderid , @RequestParam(name="currstatus") String currstatus)
     {
          orderserviceimpl.updateOrderStatus(orderid, currstatus);
-        
+        return  ResponseEntity.ok("successfully updated status");
     }
     
     

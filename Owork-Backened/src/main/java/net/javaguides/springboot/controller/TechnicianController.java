@@ -3,6 +3,7 @@ package net.javaguides.springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,13 +19,14 @@ public class TechnicianController {
     @Autowired
     TechnicianServiceImpl tchserviceimpl;
     
-    @PostMapping("/api/addtechnician")
-    public void addtch(@RequestBody technician tch)
+    @PostMapping("/api/technician/signup")
+    public ResponseEntity<String> addtch(@RequestBody technician tch)
     {
         tchserviceimpl.addtechnician(tch);
+        return ResponseEntity.ok("successfully added technician");
     }
     
-    @GetMapping("/api/getalltechnician")
+    @GetMapping("/api/technician/getall")
     public List<technician> getalltch()
     {
        return tchserviceimpl.getalltechnician();
@@ -32,12 +34,19 @@ public class TechnicianController {
     
 
     
-    @GetMapping("/api/gettechnicianbywork/{work}")
+    @GetMapping("/api/technician/getbywork/{work}")
     public List<technician> findbywork(@PathVariable String work)
     {
         return tchserviceimpl.Getbyworkdomain(work);
         
     }
+    
+    @GetMapping("/api/technician/countall")
+    public int CountAllTech()
+    {
+        return tchserviceimpl.CountTech();
+    }
+    
     
     
     

@@ -24,10 +24,10 @@ public class techniciandao {
     public int createtabletechnician()
     {
        String query="CREATE TABLE  IF NOT EXISTS technician\n"
-               + "(\n"   
-               + "    name VARCHAR(255) ,\n"
+               + "    (name VARCHAR(255) ,\n"
                + "    dob Date NOT NULL,\n"
                + "    phone Varchar(15) ,\n"
+               +"     rating int , \n"
                + "    address VARCHAR(255) ,\n"
                + "    email VARCHAR(255) NOT NULL,\n"
                + "    areaofexpertise VARCHAR(255) , \n"
@@ -68,6 +68,12 @@ public class techniciandao {
     {
         String sql="select * from technician where areaofexpertise= ? ";
         return this.jdbctemplate.query(sql, new BeanPropertyRowMapper<technician>(technician.class),work);
+    }
+    
+   
+    public int counttotalTech()
+    {
+        return this.jdbctemplate.queryForObject("select count(*) from technician",Integer.class);
     }
     
 }

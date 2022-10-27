@@ -3,6 +3,7 @@ package net.javaguides.springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +30,10 @@ public class ReviewsController {
     }
     
     @PostMapping("/api/addreview")
-    public void addReview(@RequestBody reviews Review)
+    public ResponseEntity<String> addReview(@RequestBody reviews Review)
     {
         Reviewsserviceimpl.addreview(Review);
+        return  ResponseEntity.ok("Successfully added review");
     }
     
     

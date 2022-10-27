@@ -22,8 +22,7 @@ public class reviewsDao {
     public void createReviews()
     {
         String sql="CREATE TABLE IF NOT EXISTS reviews\n"
-                + "(\n"
-                + "    reviewid int NOT NULL AUTO_INCREMENT , \n"
+                + "    (reviewid int NOT NULL AUTO_INCREMENT , \n"
                 + "    description VARCHAR(255) ,\n"
                 + "    rating int , \n"
                 + "    technicianemail VARCHAR(255) NOT NULL , \n"
@@ -31,7 +30,6 @@ public class reviewsDao {
                 + "    PRIMARY KEY (reviewid) , \n"
                 + "    FOREIGN KEY (technicianemail) REFERENCES technician(email) ON DELETE CASCADE ,\n"
                 + "    FOREIGN KEY (customeremail) REFERENCES customer(email) ON DELETE CASCADE \n"
-                + "\n"
                 + ");";
         
         this.jdbctemplate.update(sql);
@@ -42,6 +40,8 @@ public class reviewsDao {
     {
         String sql="insert into reviews values(?,?,?,?)";
         this.jdbctemplate.update(sql,Review.getDescription(),Review.getRating(),Review.getTechnicianemail(),Review.getCustomeremail());
+      int avgrating=this.jdbctemplate.queryForObject("select avg(rating) from reviews where technicianemail=?", Integer.class,Review.getTechnicianemail());
+      this.jdbctemplate.update("update technician set rating=? where email=?",avgrating,Review.getTechnicianemail());
     }
     
     public List<reviews> getallbyTechEmail(String email)

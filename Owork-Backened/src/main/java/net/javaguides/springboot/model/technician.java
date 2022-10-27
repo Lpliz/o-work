@@ -1,16 +1,15 @@
 package net.javaguides.springboot.model;
 
-import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class technician {
- 
-    private String name;
+      private String name;
     private String phone;
     private LocalDate dob;
     private String address;
+    private int rating;
     private String email;
     private String areaofexpertise;
     private String password;
@@ -78,7 +77,12 @@ public List<orders> getAssignedorders() {
 public void setAssignedorders(List<orders> assignedorders) {
     this.assignedorders = assignedorders;
 }
-   
+public int getRating() {
+    return rating;
+}
+public void setRating(int rating) {
+    this.rating = rating;
+}
     
     
 }
