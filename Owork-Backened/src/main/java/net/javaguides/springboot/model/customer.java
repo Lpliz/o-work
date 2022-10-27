@@ -5,7 +5,7 @@ import java.util.List;
 
 public class customer {
     
-   
+  
     private String name;
     private String phone;
     private String address;
@@ -63,6 +63,8 @@ public class customer {
     public void setRequestedorders(List<orders> requestedorders) {
         this.requestedorders = requestedorders;
     }
+    
+   
     
 
 }

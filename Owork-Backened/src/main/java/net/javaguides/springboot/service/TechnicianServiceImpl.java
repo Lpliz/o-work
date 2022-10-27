@@ -44,5 +44,10 @@ public class TechnicianServiceImpl {
     {
         return tchdao.findbyemail(email);
     }
+    
+    public int CountTech()
+    {
+        return tchdao.counttotalTech();
+    }
 
 }

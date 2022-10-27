@@ -1,6 +1,7 @@
 package net.javaguides.springboot.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -45,6 +46,16 @@ public class customerdao {
     {
         String query="select count(*) from customer where email = ? ";
         return this.jdbctemplate.queryForObject(query,Integer.class,email);
+    }
+    
+    public int countTotalCust()
+    {
+        return this.jdbctemplate.queryForObject("select count(*) from customer", Integer.class);
+    }
+    
+    public customer getcustinfo(String email)
+    {
+        return this.jdbctemplate.queryForObject("select * from customer where email = ?", new BeanPropertyRowMapper<customer>(customer.class),email);
     }
 
 
