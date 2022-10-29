@@ -5,5 +5,9 @@ Description -  Web based application which helps customer books reliable -beauty
 
 # Requiremnts
 <ul>
+<li>java 17</li>
 <li>spring boot</li>
+<li>reactjs</li>
+<li>reactstrap</li>
+
  </ul>
