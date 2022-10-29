@@ -30,6 +30,9 @@ public class techniciandao {
                +"     rating int , \n"
                + "    address VARCHAR(255) ,\n"
                + "    email VARCHAR(255) NOT NULL,\n"
+               + "    city VARCHAR(255) NOT NULL,\n"
+               + "    state VARCHAR(255) NOT NULL,\n"
+               + "    zip VARCHAR(255) NOT NULL,\n"
                + "    areaofexpertise VARCHAR(255) , \n"
                + "    password VARCHAR(255) , \n"
                + "    PRIMARY KEY(email)  \n"
@@ -40,8 +43,8 @@ public class techniciandao {
     }
     public void inserttechnician(technician tch)
     {
-        String query="insert into technician(name,dob,phone,address,email,areaofexpertise,password) values(?,?,?,?,?,?,?)";
-        this.jdbctemplate.update(query,tch.getName(),tch.getDob(),tch.getPhone(),tch.getAddress(),tch.getEmail(),tch.getAreaofexpertise(),tch.getPassword());
+        String query="insert into technician(name,dob,phone,rating,address,email,city,state,zip,areaofexpertise,password) values(?,?,?,?,?,?,?,?,?,?,?)";
+        this.jdbctemplate.update(query,tch.getName(),tch.getDob(),tch.getPhone(),0,tch.getAddress(),tch.getEmail(),tch.getCity(),tch.getState(),tch.getZip(),tch.getAreaofexpertise(),tch.getPassword());
         
         
     }
@@ -75,5 +78,12 @@ public class techniciandao {
     {
         return this.jdbctemplate.queryForObject("select count(*) from technician",Integer.class);
     }
+    public int matchthepassword(String email, String password) {
+       
+        String sql="select count(*) from technician where email = ? && password = ? ";
+        return this.jdbctemplate.queryForObject(sql, Integer.class,email,password);
+        
+    }
+    
     
 }

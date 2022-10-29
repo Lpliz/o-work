@@ -28,6 +28,9 @@ public class customerdao {
                + "    phone VARCHAR(50) NOT NULL,\n"
                + "    email VARCHAR(255) NOT NULL,\n"
                + "    password VARCHAR(255) , \n"
+               + "    city VARCHAR(255) , \n"
+               + "    state VARCHAR(255) , \n"
+               + "    zip VARCHAR(255) , \n"
                + "    PRIMARY key (email)  \n"
                + ");";
        int update =  this.jdbctemplate.update(query);
@@ -36,8 +39,8 @@ public class customerdao {
     }
     public void insertcustomer(customer cust)
     {
-        String query="insert into customer values(?,?,?,?,?)";
-        this.jdbctemplate.update(query,cust.getName(),cust.getAddress(),cust.getPhone(),cust.getEmail(),cust.getPassword());
+        String query="insert into customer values(?,?,?,?,?,?,?,?)";
+        this.jdbctemplate.update(query,cust.getName(),cust.getAddress(),cust.getPhone(),cust.getEmail(),cust.getPassword(),cust.getCity(),cust.getState(),cust.getZip());
         System.out.println("successfully inserted");
         
     }
@@ -56,6 +59,13 @@ public class customerdao {
     public customer getcustinfo(String email)
     {
         return this.jdbctemplate.queryForObject("select * from customer where email = ?", new BeanPropertyRowMapper<customer>(customer.class),email);
+    }
+
+    public int matchthepassword(String email, String password) {
+        // TODO Auto-generated method stub
+        String sql="select count(*) from customer where email = ? && password = ? ";
+        return jdbctemplate.queryForObject(sql, Integer.class,email,password);
+        
     }
 
 

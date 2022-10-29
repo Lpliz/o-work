@@ -14,7 +14,7 @@ public class TechnicianServiceImpl {
     @Autowired
     techniciandao tchdao;
     
-    public void addtechnician(technician tch)
+    public int addtechnician(technician tch)
     {
         int cttch = tchdao.countbyemail(tch.getEmail());
         if(cttch==0)
@@ -27,6 +27,7 @@ public class TechnicianServiceImpl {
         {
             System.out.println("user already exist");
         }
+        return cttch;
     }
     
     public List<technician> getalltechnician()
@@ -48,6 +49,11 @@ public class TechnicianServiceImpl {
     public int CountTech()
     {
         return tchdao.counttotalTech();
+    }
+
+    public technician tchinfo(String email) {
+        // TODO Auto-generated method stub
+        return tchdao.findbyemail(email);
     }
 
 }
