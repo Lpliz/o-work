@@ -16,7 +16,7 @@ public class CustomerServiceImpl {
     @Autowired
     customerdao custdao;
     
-    public void addcustomer(customer cust)
+    public int addcustomer(customer cust)
     {
         int ctcust = custdao.countbyemail(cust.getEmail());
         if(ctcust==0)
@@ -29,6 +29,7 @@ public class CustomerServiceImpl {
         {
             System.out.println("user already exist");
         }
+        return ctcust;
     }
     
     
