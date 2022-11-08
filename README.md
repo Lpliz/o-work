@@ -12,4 +12,14 @@ Description -  Web based application which helps customer books reliable -beauty
 
  </ul>
  
+ # Relational schema
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <img src="https://github.com/ankushkmeena/O-work/blob/main/Relational_schema.png" />
+ 
  
