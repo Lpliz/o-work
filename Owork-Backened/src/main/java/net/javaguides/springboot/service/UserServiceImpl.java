@@ -3,6 +3,7 @@ package net.javaguides.springboot.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import net.javaguides.springboot.dao.Admindao;
 import net.javaguides.springboot.dao.customerdao;
 import net.javaguides.springboot.dao.techniciandao;
 import net.javaguides.springboot.model.user;
@@ -16,6 +17,11 @@ public class UserServiceImpl {
     @Autowired
     customerdao Custdao;
     
+    @Autowired
+    private Admindao admindao;
+    
+    
+    
 
     public int logincheck(user User) {
         
@@ -23,6 +29,7 @@ public class UserServiceImpl {
       
           int fin1 = Tchdao.matchthepassword(User.getEmail(),User.getPassword());
           int fin2 = Custdao.matchthepassword(User.getEmail(),User.getPassword());
+          int fin3 = admindao.matchthepassword(User.getEmail(),User.getPassword());
           System.out.println(fin1);
           System.out.println(fin2); 
           System.out.println(User.getEmail()); 
@@ -39,6 +46,10 @@ public class UserServiceImpl {
              
               return 2;
               }
+          else  if(fin3>=1)
+          {
+              return 3;
+          }
           else return 0;
           //return fin2;
          // return 200;

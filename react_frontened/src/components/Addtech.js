@@ -21,7 +21,7 @@ const TechnicianSignup = () => {
 
     };
     const Posttoserver =(data) => {
-        axios.post(`${baseurl}/api/technician/signup`,data).then(
+        axios.post(`http://localhost:8080/api/technician/signup`,data).then(
         (response)=>{
             if(response.data==1)
             {

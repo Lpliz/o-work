@@ -3,9 +3,10 @@ import React from "react";
 const Footerr=()=>{
     return (
 
-              
-            <div className="shadow   rounded bg-success  my -5">
-                        <div className="text-center">
+              <div>
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <div className="shadow  mt-4   rounded bg-success position-relative    ">
+                        <div className=" footer text-center ">
                             All rights reserved !
                             <br />
                             Version 1.0 
@@ -14,6 +15,7 @@ const Footerr=()=>{
                            <br />
                            IIT BHU ,  Varanasi
 
+                            </div>
                             </div>
 
 

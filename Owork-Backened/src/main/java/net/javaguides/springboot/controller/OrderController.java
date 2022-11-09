@@ -33,10 +33,18 @@ public class OrderController {
         
     }
     
+    
+    
     @GetMapping("/api/getallorders/{techemail}")
     public List<orders> getAllorders(@PathVariable String techemail)
     {
         return orderserviceimpl.getbyTechemail(techemail);
+        
+    }
+    @GetMapping("/api/allorders/{custemail}")
+    public List<orders> getAllorder(@PathVariable String custemail)
+    {
+        return orderserviceimpl.getbycustemail(custemail);
         
     }
     

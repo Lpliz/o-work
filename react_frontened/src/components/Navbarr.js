@@ -4,10 +4,10 @@ import React from "react";
 function Navbarr(){
     return(
         <>
-            <nav class="navbar bg-light" >
+            <nav class="navbar bg-light " >
                 <div class="container-fluid" style={{backgroundColor:'black'}}>
                     <a class="navbar-brand" href="/">
-                        <img src="owork.jpg" alt="Logo" width="40" height="24" class="d-inline-block align-text-top" />
+                        <img src={process.env.PUBLIC_URL + "/owork.jpg"} alt="Logo" width="40" height="24" class="d-inline-block align-text-top" />
                         <b style={{color:'white',fontFamily:'cursive'}}>Owork</b>
                     </a>
                     <ul class="nav justify-content-end" >
@@ -42,10 +42,10 @@ function Navbarr(){
                             <a class="nav-link" style={{color:'white',fontFamily:'cursive'}} href="/aboutus"><b>About</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style={{color:'white',fontFamily:'cursive'}}href="/"><b>Blog</b></a>
+                            <a class="nav-link" style={{color:'white',fontFamily:'cursive'}}href="/api/faqs"><b>FAQs</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style={{color:'white',fontFamily:'cursive'}}href="/"><b>Contact Us</b></a>
+                            <a class="nav-link" style={{color:'white',fontFamily:'cursive'}}href="/api/contactus"><b>Contact Us</b></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" style={{color:'white',fontFamily:'cursive'}}href="/api/technician/signup" ><b>Register as a technician</b></a>

@@ -5,7 +5,7 @@ import Footerr from "./Footer";
 import Works from "./Howitworks";
 
 import Navbarr from "./Navbarr";
-import RatingApp from "./Rating";
+
 import Service from "./Service";
 
 export default function MainHome(){

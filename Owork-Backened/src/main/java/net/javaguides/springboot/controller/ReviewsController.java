@@ -24,10 +24,10 @@ public class ReviewsController {
     ReviewsServiceImpl Reviewsserviceimpl;
     
     
-    @GetMapping("/api/getallreviews")
-    public List<reviews> Getallreviews(@RequestParam(name="techemail")  String techemail )
+    @GetMapping("/api/reviews/{email}")
+    public List<reviews> Getallreviews(@PathVariable String email )
     {
-        return Reviewsserviceimpl.getAllreviewsbyTechemail(techemail);
+        return Reviewsserviceimpl.getAllreviewsbyTechemail(email);
         
     }
     

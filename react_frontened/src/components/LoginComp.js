@@ -31,6 +31,11 @@ const Login = () => {
       console.log(`/api/customer/${data}`);
       navigatetocustdash(`/api/customer/${data}`);
     }
+    const navigatetoadmindash = useNavigate();
+    const NavigateToAdminDash=(data)=>{
+      console.log(`/api/customer/${data}`);
+      navigatetoadmindash(`/api/admin/${data}`);
+    }
     const Posttoserver =(data) => {
         axios.post(`${baseurl}/api/login`,data).then(
         (response)=>{
@@ -46,6 +51,10 @@ const Login = () => {
                 {
                   NavigateToCustDash(data.email);
 
+                }
+                else if(response.data==3)
+                {
+                  NavigateToAdminDash(data.email);
                 }
                 else{
                   toast.error("incorrect email or password");

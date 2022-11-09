@@ -55,5 +55,11 @@ public class TechnicianServiceImpl {
         // TODO Auto-generated method stub
         return tchdao.findbyemail(email);
     }
+    
+    
+    public void deleteTch(String email)
+    {
+        tchdao.deleteTechnician(email);
+    }
 
 }
