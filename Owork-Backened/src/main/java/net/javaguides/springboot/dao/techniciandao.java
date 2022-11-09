@@ -35,7 +35,8 @@ public class techniciandao {
                + "    zip VARCHAR(255) NOT NULL,\n"
                + "    areaofexpertise VARCHAR(255) , \n"
                + "    password VARCHAR(255) , \n"
-               + "    PRIMARY KEY(email)  \n"
+               + "    PRIMARY KEY(email)  , \n" 
+               + "    FOREIGN KEY (areaofexpertise) REFERENCES worktype(workname) ON DELETE CASCADE \n"
                + ");";
        int update =  this.jdbctemplate.update(query);
        return update;
@@ -71,6 +72,12 @@ public class techniciandao {
     {
         String sql="select * from technician where areaofexpertise= ? ";
         return this.jdbctemplate.query(sql, new BeanPropertyRowMapper<technician>(technician.class),work);
+    }
+    
+    public void deleteTechnician(String email)
+    {
+        String sql="delete from technician where email=?";
+        this.jdbctemplate.update(sql,email);
     }
     
    

@@ -8,7 +8,7 @@ public class orders {
     
     private int orderid;
     private String description;
-    private LocalDateTime time;
+    private Date date;
     private String technicianemail;
     private String customeremail;
     private String orderstatus;
@@ -26,13 +26,7 @@ public class orders {
         this.description = description;
     }
    
-    public LocalDateTime getTime() {
-        return time;
-    }
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
- 
+    
     public String getTechnicianemail() {
         return technicianemail;
     }
@@ -50,6 +44,12 @@ public class orders {
     }
     public void setOrderstatus(String orderstatus) {
         this.orderstatus = orderstatus;
+    }
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
     }
     
     

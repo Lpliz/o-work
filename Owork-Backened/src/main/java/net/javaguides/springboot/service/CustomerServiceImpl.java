@@ -28,6 +28,7 @@ public class CustomerServiceImpl {
         else
         {
             System.out.println("user already exist");
+            
         }
         return ctcust;
     }

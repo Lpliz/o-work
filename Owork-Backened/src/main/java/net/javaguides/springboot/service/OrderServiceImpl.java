@@ -31,6 +31,11 @@ public class OrderServiceImpl {
     {
         return orderdao.searchByTechemail(email);
     }
+
+    public List<orders> getbycustemail(String custemail) {
+        // TODO Auto-generated method stub
+        return orderdao.searchbycustemail(custemail);
+    }
     
     
 

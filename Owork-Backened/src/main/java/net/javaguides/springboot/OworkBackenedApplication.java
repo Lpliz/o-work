@@ -8,12 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import net.javaguides.springboot.dao.FaqDao;
+import net.javaguides.springboot.dao.Admindao;
+import net.javaguides.springboot.dao.Faqdao;
 import net.javaguides.springboot.dao.OrderDao;
+import net.javaguides.springboot.dao.Worktypedao;
 import net.javaguides.springboot.dao.customerdao;
 import net.javaguides.springboot.dao.reviewsDao;
 import net.javaguides.springboot.dao.techniciandao;
-
 
 @SpringBootApplication
 public class OworkBackenedApplication implements CommandLineRunner {
@@ -33,8 +34,15 @@ public class OworkBackenedApplication implements CommandLineRunner {
     private OrderDao orderdao;
     
     @Autowired
-    private FaqDao Faqdao;
+    private Worktypedao workdao;
     
+    @Autowired
+    private Faqdao faqdao;
+    
+    @Autowired
+    private Admindao admindao;
+    
+   
     
     
 	public static void main(String[] args) {
@@ -46,12 +54,16 @@ public class OworkBackenedApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        
+        this.admindao.createtableadmin();
+        this.workdao.createtableworktype();
         System.out.println(this.techdao.createtabletechnician());
         System.out.println(this.Custodao.createtablecustomer());
         this.Reviewsdao.createReviews();
         this.orderdao.createOrderTable();
-        this.Faqdao.createfaq();
+       
+       
+       
+        
         // TODO Auto-generated method stub
         
     }

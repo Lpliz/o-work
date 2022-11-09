@@ -1,5 +1,6 @@
 package net.javaguides.springboot.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class OrderDao {
                 + "    orderid int NOT NULL AUTO_INCREMENT , \n"
                 + "    description VARCHAR(255) , \n"
                 + "    orderstatus VARCHAR(255) , \n"
-                + "    date Date ,\n"
+                + "    date DATE  ,\n"
                 + "    technicianemail VARCHAR(255) not null ,\n"
                 + "    customeremail VARCHAR(255) not null ,\n"
                 + "    PRIMARY KEY (orderid) ,\n"
@@ -34,15 +35,15 @@ public class OrderDao {
     }
     public void insertOrdertable(orders Order)
     {
-        String sql="insert into orders values(?,?,?,?)";
-        this.jdbctemplate.update(sql,Order.getDescription(),"new",Order.getTechnicianemail(),Order.getCustomeremail());
+        String sql="insert into orders(description,orderstatus,date,technicianemail,customeremail) values(?,?,?,?,?)";
+        this.jdbctemplate.update(sql,Order.getDescription(),"Pending",LocalDate.now(),Order.getTechnicianemail(),Order.getCustomeremail());
         
     }
     
     public List<orders> searchByTechemail(String email)
     {
         String sql="select * from orders where technicianemail=?";
-        return this.jdbctemplate.query(sql,new BeanPropertyRowMapper<orders>(),email);
+        return this.jdbctemplate.query(sql,new BeanPropertyRowMapper<orders>(orders.class),email);
     }
     
     public void updateOrderStatus(int id,String orderStatus)
@@ -50,6 +51,12 @@ public class OrderDao {
         String sql="update orders set orderstatus=? where orderid = ?";
         this.jdbctemplate.update(sql,orderStatus,id);
                 
+    }
+    public List<orders> searchbycustemail(String custemail) {
+        // TODO Auto-generated method stub
+        String sql="select * from orders where customeremail = ?";
+        
+        return this.jdbctemplate.query(sql,new BeanPropertyRowMapper<orders>(orders.class),custemail); 
     }
 
 }

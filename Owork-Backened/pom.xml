@@ -31,6 +31,11 @@
     <artifactId>jjwt</artifactId>
     <version>0.9.1</version>
 </dependency>
+<dependency>
+ <groupId>com.razorpay</groupId>
+ <artifactId>razorpay-java</artifactId>
+ <version>1.4.3</version>
+</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 <dependency>
     <groupId>javax.xml.bind</groupId>

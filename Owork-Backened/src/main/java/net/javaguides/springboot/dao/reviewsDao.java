@@ -38,7 +38,7 @@ public class reviewsDao {
     
     public void insertReviews(reviews Review)
     {
-        String sql="insert into reviews values(?,?,?,?)";
+        String sql="insert into reviews(description,rating,technicianemail,customeremail) values(?,?,?,?)";
         this.jdbctemplate.update(sql,Review.getDescription(),Review.getRating(),Review.getTechnicianemail(),Review.getCustomeremail());
       int avgrating=this.jdbctemplate.queryForObject("select avg(rating) from reviews where technicianemail=?", Integer.class,Review.getTechnicianemail());
       this.jdbctemplate.update("update technician set rating=? where email=?",avgrating,Review.getTechnicianemail());
@@ -47,7 +47,7 @@ public class reviewsDao {
     public List<reviews> getallbyTechEmail(String email)
     {
         String sql="select * from reviews where technicianemail=?";
-        return this.jdbctemplate.query(sql,new BeanPropertyRowMapper<reviews>(),email);
+        return this.jdbctemplate.query(sql,new BeanPropertyRowMapper<reviews>(reviews.class),email);
         
         
     }
